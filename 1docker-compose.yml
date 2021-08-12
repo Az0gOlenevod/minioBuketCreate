@@ -1,0 +1,22 @@
+version: '3'
+services:
+  s3:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./storage/minio:/data
+    environment:
+      MINIO_ACCESS_KEY: 123456789
+      MINIO_SECRET_KEY: 123456789
+    command: server /data
+
+  apppy:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    links:
+        - s3

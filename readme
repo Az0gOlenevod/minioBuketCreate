@@ -1,0 +1,2 @@
+mc alias set ALIAS http://192.168.48.2:9000 123456789 123456789
+mc policy get-json ALIAS/xyi
